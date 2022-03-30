@@ -8,23 +8,30 @@ public class Main
     public static void main(String[] args)
     {
     ////Задание 1 - 2; вариант 1;
-        int clientOS = 1; // 0 — iOS, 1 — Android;
+        int clientOS = 0; // 0 — iOS, 1 — Android;
         int clientDeviceYear = 2022;
+        boolean ioUp = clientOS==0 && clientDeviceYear >= 2015;
+        boolean ioDown = clientOS==0 && clientDeviceYear < 2015;
+        boolean adUp = clientOS==1 && clientDeviceYear >= 2015;
 
-            if (clientOS==0 && clientDeviceYear >= 2015)
+            if (ioUp)
             {
                 System.out.println("Установите новую версию приложения для iOS по ссылке:" + "ссылка".toUpperCase());
-            }else if (clientOS==0 && clientDeviceYear < 2015)
+            }else if (ioDown)
             {
                 System.out.println("Установите старую версию приложения для iOS по ссылке:"+
                         "ссылка".toUpperCase());
-            }else if (clientOS==1 && clientDeviceYear >= 2015)
+            }else if (adUp)
             {
                 System.out.println("Установите новую версию приложения для Android по ссылке:" +
                         "ссылка".toUpperCase());
             }else
                 System.out.println("Установите старую версию приложения для Android по ссылке:" +
                         "ссылка".toUpperCase());
+
+
+
+
 
 
     ////Задание 1 - 2; вариант 2; (клиент сам выберет =) );
@@ -45,8 +52,9 @@ public class Main
     ////Задание 3
 
         int year = 2022;
+        boolean trYear = year % 4 == 0 && year % 100 != 0 || year % 400 == 0;
 
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+        if (trYear)
         {
             System.out.println("« " + year + " год является високосным».");
         } else
@@ -56,17 +64,20 @@ public class Main
 
         float deliveryDistance = 45.4f;
         int day;
+        boolean dist1 = deliveryDistance < 20 && deliveryDistance != 0;
+        boolean dist2 = deliveryDistance >= 20 && deliveryDistance < 60;
+        boolean dist3 = deliveryDistance >= 60 && deliveryDistance <= 100;
 
-        if (deliveryDistance < 20 && deliveryDistance != 0) //Доставка в пределах 20 км занимает сутки
+        if (dist1) //Доставка в пределах 20 км занимает сутки
         {
             day = 1;
             System.out.println("Доставим Вашу карту через " + day + " день!");
 
-        }else if (deliveryDistance >= 20 && deliveryDistance < 60 ) //Доставка в пределах от 20 км до 60 км добавляет еще один день доставки.
+        }else if (dist2) //Доставка в пределах от 20 км до 60 км добавляет еще один день доставки.
         {
             day = 2;
             System.out.println("Доставим Вашу карту через " + day + " дня!");
-        } else if (deliveryDistance >= 60 && deliveryDistance <= 100) //Доставка в пределах 60 км до 100 км добавляет еще одни сутки.
+        } else if (dist3) //Доставка в пределах 60 км до 100 км добавляет еще одни сутки.
         {
             day = 3;
             System.out.println("Доставим Вашу карту через " + day + " дня!");
